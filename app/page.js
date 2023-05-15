@@ -16,7 +16,7 @@ const greeting = () => {
 
 export default function Home() {
   return (
-    <div className="ml-0 md:ml-72 mt-20">
+    <div className="ml-0 mt-20  sm:ml-72">
       <h4 class="text-2xl font-bold dark:text-white">
         {`${greeting()}`} Neil Sims
       </h4>
@@ -34,13 +34,12 @@ export default function Home() {
           Podcast
         </button>
       </div>
-      <div className="flex gap-5">
-        <Card
-          title="The Way You Look Tonight"
-          artist="Frank Sinatra"
-          src="https://fastly.picsum.photos/id/391/400/200.jpg?hmac=rMtwXQJMpgFWTOT37yUj0wkfRaQ8_XOyUWgBrf3k8WE"
-        />
-        <Card
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+        <Card title="Liked Songs" src="https://picsum.photos/100" />
+        <Card title="Tamil Songs" src="https://picsum.photos/100" />
+        <Card title="Hindi Songs" src="https://picsum.photos/100" />
+        <Card title="Telugu Songs" src="https://picsum.photos/100" />
+        {/* <Card 
           title="Strangers in the Night"
           artist="Frank Sinatra"
           src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
@@ -49,36 +48,9 @@ export default function Home() {
           title="Strangers in the Night"
           artist="Frank Sinatra"
           src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
-        />
-        <Card
-          title="Strangers in the Night"
-          artist="Frank Sinatra"
-          src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
-        />
+        /> */}
       </div>
       <h4 class="text-2xl font-bold dark:text-white">Recently Played</h4>
-      <div className="flex gap-5">
-        <Card
-          title="The Way You Look Tonight"
-          artist="Frank Sinatra"
-          src="https://fastly.picsum.photos/id/391/400/200.jpg?hmac=rMtwXQJMpgFWTOT37yUj0wkfRaQ8_XOyUWgBrf3k8WE"
-        />
-        <Card
-          title="Strangers in the Night"
-          artist="Frank Sinatra"
-          src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
-        />
-        <Card
-          title="Strangers in the Night"
-          artist="Frank Sinatra"
-          src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
-        />
-        <Card
-          title="Strangers in the Night"
-          artist="Frank Sinatra"
-          src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
-        />
-      </div>
     </div>
   );
 }
