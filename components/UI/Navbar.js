@@ -38,7 +38,7 @@ function Navbar() {
                 </svg>
               </button>
               <a href="/" class="flex ml-2 md:mr-24 gap-2">
-                <BsSpotify size={30} />
+                <BsSpotify size={30} color="green" />
                 <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                   Spotify
                 </span>
