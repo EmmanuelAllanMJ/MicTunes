@@ -1,5 +1,6 @@
 import Card from "@/components/UI/Card";
 import SongCard from "@/components/UI/SongCard";
+import Wrapper from "@/components/Wrapper/Wrapper";
 import Image from "next/image";
 
 const greeting = () => {
@@ -17,7 +18,7 @@ const greeting = () => {
 
 export default function Home() {
   return (
-    <div className="ml-5 mt-20  sm:ml-72">
+    <Wrapper>
       <h4 class="text-2xl font-bold dark:text-white">
         {`${greeting()}`} Neil Sims
       </h4>
@@ -35,7 +36,7 @@ export default function Home() {
           Podcast
         </button>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-center justify-between ">
         <Card title="Liked Songs" src="https://picsum.photos/100" />
         <Card title="Tamil Songs" src="https://picsum.photos/100" />
         <Card title="Hindi Songs" src="https://picsum.photos/100" />
@@ -78,6 +79,6 @@ export default function Home() {
           album_name="Strangers in the Night"
         />
       </div>
-    </div>
+    </Wrapper>
   );
 }
