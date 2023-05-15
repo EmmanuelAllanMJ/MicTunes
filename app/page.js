@@ -1,4 +1,5 @@
 import Card from "@/components/UI/Card";
+import SongCard from "@/components/UI/SongCard";
 import Image from "next/image";
 
 const greeting = () => {
@@ -16,7 +17,7 @@ const greeting = () => {
 
 export default function Home() {
   return (
-    <div className="ml-0 mt-20  sm:ml-72">
+    <div className="ml-5 mt-20  sm:ml-72">
       <h4 class="text-2xl font-bold dark:text-white">
         {`${greeting()}`} Neil Sims
       </h4>
@@ -50,7 +51,33 @@ export default function Home() {
           src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
         /> */}
       </div>
-      <h4 class="text-2xl font-bold dark:text-white">Recently Played</h4>
+      <h4 class="text-2xl font-bold dark:text-white my-4">Recently Played</h4>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <SongCard
+          title="Strangers in the Night"
+          artist="Frank Sinatra"
+          time="3:00"
+          album_name="Strangers in the Night"
+        />
+        <SongCard
+          title="Strangers in the Night"
+          artist="Frank Sinatra"
+          time="3:00"
+          album_name="Strangers in the Night"
+        />
+        <SongCard
+          title="Strangers in the Night"
+          artist="Frank Sinatra"
+          time="3:00"
+          album_name="Strangers in the Night"
+        />
+        <SongCard
+          title="Strangers in the Night"
+          artist="Frank Sinatra"
+          time="3:00"
+          album_name="Strangers in the Night"
+        />
+      </div>
     </div>
   );
 }
