@@ -1,3 +1,4 @@
+import Card from "@/components/UI/Card";
 import Image from "next/image";
 
 const greeting = () => {
@@ -32,6 +33,51 @@ export default function Home() {
         >
           Podcast
         </button>
+      </div>
+      <div className="flex gap-5">
+        <Card
+          title="The Way You Look Tonight"
+          artist="Frank Sinatra"
+          src="https://fastly.picsum.photos/id/391/400/200.jpg?hmac=rMtwXQJMpgFWTOT37yUj0wkfRaQ8_XOyUWgBrf3k8WE"
+        />
+        <Card
+          title="Strangers in the Night"
+          artist="Frank Sinatra"
+          src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
+        />
+        <Card
+          title="Strangers in the Night"
+          artist="Frank Sinatra"
+          src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
+        />
+        <Card
+          title="Strangers in the Night"
+          artist="Frank Sinatra"
+          src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
+        />
+      </div>
+      <h4 class="text-2xl font-bold dark:text-white">Recently Played</h4>
+      <div className="flex gap-5">
+        <Card
+          title="The Way You Look Tonight"
+          artist="Frank Sinatra"
+          src="https://fastly.picsum.photos/id/391/400/200.jpg?hmac=rMtwXQJMpgFWTOT37yUj0wkfRaQ8_XOyUWgBrf3k8WE"
+        />
+        <Card
+          title="Strangers in the Night"
+          artist="Frank Sinatra"
+          src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
+        />
+        <Card
+          title="Strangers in the Night"
+          artist="Frank Sinatra"
+          src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
+        />
+        <Card
+          title="Strangers in the Night"
+          artist="Frank Sinatra"
+          src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
+        />
       </div>
     </div>
   );
