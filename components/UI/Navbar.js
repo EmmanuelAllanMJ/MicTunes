@@ -4,11 +4,22 @@ import React, { useState } from "react";
 import { BsSpotify } from "react-icons/bs";
 import { AiFillHome } from "react-icons/ai";
 import { BiPodcast, BiSearch, BiLibrary } from "react-icons/bi";
-import { SignIn } from "@clerk/nextjs";
+import {
+  SignIn,
+  SignInButton,
+  SignOutButton,
+  SignUp,
+  useClerk,
+  useUser,
+} from "@clerk/nextjs";
 
 function Navbar() {
   const [profileOnClick, setProfileOnClick] = useState(false);
   const [btnOnClick, setBtnOnClick] = useState(true);
+  const { isSignedIn, isLoaded, user } = useUser();
+    const { signOut } = useClerk();
+
+
   return (
     <>
       <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -45,7 +56,7 @@ function Navbar() {
                 </span>
               </a>
             </div>
-            <div className="flex items-center">
+            {isSignedIn && <div className="flex items-center">
               <div className="flex items-center ml-3">
                 <div>
                   <button
@@ -60,15 +71,14 @@ function Navbar() {
                       width={32}
                       height={32}
                       className=" rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                      src={`${user.profileImageUrl}`}
                       alt="user photo"
                     />
                   </button>
                 </div>
                 <div
-                  className={`z-50 ${
-                    !profileOnClick && "hidden"
-                  }  absolute top-0 right-0 mr-2 mt-14 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600`}
+                  className={`z-50 ${!profileOnClick && "hidden"
+                    }  absolute top-0 right-0 mr-2 mt-14 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600`}
                   id="dropdown-user"
                 >
                   <div className="px-4 py-3" role="none">
@@ -76,13 +86,13 @@ function Navbar() {
                       className="text-sm text-gray-900 dark:text-white"
                       role="none"
                     >
-                      Neil Sims
+                      {user.fullName}
                     </p>
                     <p
                       className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
                       role="none"
                     >
-                      neil.sims@flowbite.com
+                     {user.primaryEmailAddress.emailAddress}
                     </p>
                   </div>
                   <ul className="py-1" role="none">
@@ -113,7 +123,7 @@ function Navbar() {
                         Earnings
                       </a>
                     </li>
-                    <li>
+                    <li onClick={() => signOut()} >
                       <a
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -125,7 +135,13 @@ function Navbar() {
                   </ul>
                 </div>
               </div>
-            </div>
+            </div>}
+            {!isSignedIn && (
+              <button  type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                <SignInButton/>
+              </button>
+
+            )}
           </div>
         </div>
       </nav>
@@ -221,31 +237,11 @@ function Navbar() {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Sign In</span>
+                <span className="flex-1 ml-3 whitespace-nowrap"> <SignInButton/></span>
               </a>
             </li>
-            <SignIn/>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
-              </a>
-            </li>
+           
+
           </ul>
         </div>
       </aside>
