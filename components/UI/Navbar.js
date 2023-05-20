@@ -17,8 +17,7 @@ function Navbar() {
   const [profileOnClick, setProfileOnClick] = useState(false);
   const [btnOnClick, setBtnOnClick] = useState(true);
   const { isSignedIn, isLoaded, user } = useUser();
-    const { signOut } = useClerk();
-
+  const { signOut } = useClerk();
 
   return (
     <>
@@ -56,91 +55,96 @@ function Navbar() {
                 </span>
               </a>
             </div>
-            {isSignedIn && <div className="flex items-center">
-              <div className="flex items-center ml-3">
-                <div>
-                  <button
-                    type="button"
-                    className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                    aria-expanded="false"
-                    data-dropdown-toggle="dropdown-user"
-                    onClick={() => setProfileOnClick(!profileOnClick)}
-                  >
-                    <span className="sr-only">Open user menu</span>
-                    <Image
-                      width={32}
-                      height={32}
-                      className=" rounded-full"
-                      src={`${user.profileImageUrl}`}
-                      alt="user photo"
-                    />
-                  </button>
-                </div>
-                <div
-                  className={`z-50 ${!profileOnClick && "hidden"
-                    }  absolute top-0 right-0 mr-2 mt-14 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600`}
-                  id="dropdown-user"
-                >
-                  <div className="px-4 py-3" role="none">
-                    <p
-                      className="text-sm text-gray-900 dark:text-white"
-                      role="none"
+            {isSignedIn && (
+              <div className="flex items-center">
+                <div className="flex items-center ml-3">
+                  <div>
+                    <button
+                      type="button"
+                      className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                      aria-expanded="false"
+                      data-dropdown-toggle="dropdown-user"
+                      onClick={() => setProfileOnClick(!profileOnClick)}
                     >
-                      {user.fullName}
-                    </p>
-                    <p
-                      className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
-                      role="none"
-                    >
-                     {user.primaryEmailAddress.emailAddress}
-                    </p>
+                      <span className="sr-only">Open user menu</span>
+                      <Image
+                        width={32}
+                        height={32}
+                        className=" rounded-full"
+                        src={`${user.profileImageUrl}`}
+                        alt="user photo"
+                      />
+                    </button>
                   </div>
-                  <ul className="py-1" role="none">
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
+                  <div
+                    className={`z-50 ${
+                      !profileOnClick && "hidden"
+                    }  absolute top-0 right-0 mr-2 mt-14 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600`}
+                    id="dropdown-user"
+                  >
+                    <div className="px-4 py-3" role="none">
+                      <p
+                        className="text-sm text-gray-900 dark:text-white"
+                        role="none"
                       >
-                        Dashboard
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
+                        {user.fullName}
+                      </p>
+                      <p
+                        className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
+                        role="none"
                       >
-                        Settings
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Earnings
-                      </a>
-                    </li>
-                    <li onClick={() => signOut()} >
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Sign out
-                      </a>
-                    </li>
-                  </ul>
+                        {user.primaryEmailAddress.emailAddress}
+                      </p>
+                    </div>
+                    <ul className="py-1" role="none">
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          role="menuitem"
+                        >
+                          Dashboard
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          role="menuitem"
+                        >
+                          Settings
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          role="menuitem"
+                        >
+                          Earnings
+                        </a>
+                      </li>
+                      <li onClick={() => signOut()}>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          role="menuitem"
+                        >
+                          Sign out
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>}
+            )}
             {!isSignedIn && (
-              <button  type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                <SignInButton/>
+              <button
+                type="button"
+                className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+              >
+                <SignInButton />
               </button>
-
             )}
           </div>
         </div>
@@ -199,6 +203,15 @@ function Navbar() {
             </li>
             <li>
               <a
+                href="/upload"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                <AiFillHome size={20} color="#94a3b8" />
+                <span className="ml-3">Upload</span>
+              </a>
+            </li>
+            <li>
+              <a
                 href="#"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
@@ -237,11 +250,12 @@ function Navbar() {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap"> <SignInButton/></span>
+                <span className="flex-1 ml-3 whitespace-nowrap">
+                  {" "}
+                  <SignInButton />
+                </span>
               </a>
             </li>
-           
-
           </ul>
         </div>
       </aside>
