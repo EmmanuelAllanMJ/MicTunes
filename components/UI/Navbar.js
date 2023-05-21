@@ -9,6 +9,8 @@ import {
   SignInButton,
   SignOutButton,
   SignUp,
+  UserButton,
+  UserProfile,
   useClerk,
   useSignIn,
   useUser,
