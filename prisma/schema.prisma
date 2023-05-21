@@ -10,10 +10,8 @@ generator client {
 
 model User {
   id             Int            @id @default(autoincrement())
-  username       String         @unique
+  userId         String         @unique
   email          String         @unique
-  name           String?
-  profilePicture String?
   favoriteSongs  FavoriteSong[]
   songLists      SongList[]
   Song           Song?          @relation(fields: [songId], references: [id])
@@ -27,7 +25,8 @@ model Song {
   duration     Int
   album        String
   genre        String?
-  releaseDate  DateTime?
+  lyrics       String
+  releaseDate  DateTime   @default(now())
   favoriteBy   User[]
   songLists    SongList[]
   FavoriteSong FavoriteSong[]

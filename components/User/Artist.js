@@ -1,10 +1,13 @@
+import Image from "next/image";
 import React from "react";
 
-const Artist = () => {
+const Artist = ({imageUrl}) => {
   return (
     <div className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white">
-      <img
-        src="https://via.placeholder.com/300"
+      <Image
+        width={32}
+        height={32}
+        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
         alt="Playlist Cover"
         className="w-full"
       />

@@ -1,24 +1,39 @@
+"use client"
 import React from "react";
 import Wrapper from "../Wrapper/Wrapper";
+import { useUser } from "@clerk/nextjs";
+import Image from "next/image";
+// import { useRouter } from "next/navigation";
 
 function Profile() {
+  // const router = useRouter()
+  const { isSignedIn, isLoaded, user } = useUser();
+  console.log(user)
+  
+  // if (isLoaded && !isSignedIn) {
+  //   router.push('/',{ shallow: true })
+  // }
+
   return (
-    <Wrapper>
+    <>
+    {isSignedIn && (<Wrapper>
       <section className="pt-16 bg-blueGray-50 ">
         <div className="w-full px-4 mx-auto">
           <div className="relative flex flex-col min-w-0 break-words bg-white dark:bg-gray-900 dark:border-gray-700  dark:text-white w-full mb-6 shadow-xl rounded-lg mt-16">
             <div className="px-6">
               <div className="flex flex-wrap justify-center">
-                <img
-                  alt="..."
-                  src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  <Image
+                    width={150}
+                    height={150}
+                  alt={`${user.fullName}`}
+                  src={`${user.profileImageUrl}`}
                   className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                 />
                 <div className="w-full px-4 text-center mt-20">
                   <div className="flex justify-center py-4 lg:pt-4 pt-8">
                     <div className="mr-4 p-3 text-center">
                       <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                        22
+                        10
                       </span>
                       <span className="text-sm text-blueGray-400">Friends</span>
                     </div>
@@ -26,7 +41,7 @@ function Profile() {
                       <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                         10
                       </span>
-                      <span className="text-sm text-blueGray-400">Photos</span>
+                      <span className="text-sm text-blueGray-400">Songs</span>
                     </div>
                     <div className="lg:mr-4 p-3 text-center">
                       <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
@@ -39,7 +54,7 @@ function Profile() {
               </div>
               <div className="text-center mt-12">
                 <h3 className="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-                  Jenna Stones
+                  {user.fullName}
                 </h3>
                 <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                   <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
@@ -64,48 +79,16 @@ function Profile() {
                       warm, intimate feel with a solid groove structure. An
                       artist of considerable range.
                     </p>
-                    <a
-                      href="javascript:void(0);"
-                      className="font-normal text-pink-500"
-                    >
-                      Show more
-                    </a>
+                    
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <footer className="relative  pt-8 pb-6 mt-8">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap items-center md:justify-between justify-center">
-              <div className="w-full md:w-6/12 px-4 mx-auto text-center">
-                <div className="text-sm text-blueGray-500 font-semibold py-1">
-                  Made with{" "}
-                  <a
-                    href="https://www.creative-tim.com/product/notus-js"
-                    className="text-blueGray-500 hover:text-gray-800"
-                    target="_blank"
-                  >
-                    Notus JS
-                  </a>{" "}
-                  by{" "}
-                  <a
-                    href="https://www.creative-tim.com"
-                    className="text-blueGray-500 hover:text-blueGray-800"
-                    target="_blank"
-                  >
-                    {" "}
-                    Creative Tim
-                  </a>
-                  .
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
       </section>
-    </Wrapper>
+      </Wrapper>)}
+      </>
   );
 }
 
