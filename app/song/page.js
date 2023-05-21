@@ -11,11 +11,30 @@ import { PrismaClient } from "@prisma/client";
 // create a new instance of prisma
 const prisma = new PrismaClient();
 
+// async function getData(){
+//         const res =  await fetch(`${process.env.SERVER_URL}/api/song`, {
+//             method: "GET",
+//             headers: {
+//               "Content-Type": "application/json"
+//             }})
+//     const data = await res.json();
+//     return data
+// }
+
+
+
+// async function getData(){
+//         const res =  await fetch(`https://jsonplaceholder.typicode.com/users/`,{next:{revalidate:10}})
+//     const data = await res.json();
+//     return data
+// }
+
 
 async function Song() {
     // const res =  await fetch(`/api/song`,{cache:'no-store'})
     // const {randomSong:song} = await res.json();
     const song = await prisma.song.findMany({})
+    // const song = await getData()
 
     // console.log("req song", song)
 
@@ -35,6 +54,18 @@ async function Song() {
                 ) : (
                 <p>No songs found</p>
                 )}
+
+            {/* // <Card
+            // key={i}
+            //     artist={song.name}
+            //     title={song.username}
+            //     src={song.webiste}
+            //     link={`/song/${song.webiste}`}
+            //     />
+            //     ))
+            //     ) : (
+            //     <p>No songs found</p>
+                // )} */}
         </div>
         </Wrapper>
     );

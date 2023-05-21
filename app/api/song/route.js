@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 export const GET = async (request) => {
     
     try {
-        const randomSong = await prisma.song.find()
+        const randomSong = await prisma.song.find({})
         print("printing")
         prisma.$disconnect();
         console.log("printing")

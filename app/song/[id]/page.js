@@ -14,6 +14,19 @@ import Image from "next/image";
 // create a new instance of prisma
 const prisma = new PrismaClient();
 
+// export async function generateStaticParams(){
+//   const posts = await getData();
+//   return posts.map(post=>({
+//       id:post.slug
+//   }))
+// }
+// async function getData(){
+//   const res =  await fetch(`https://jsonplaceholder.typicode.com/users/`,{next:{revalidate:10}})
+// const data = await res.json();
+// return data
+// }
+
+
 async function SongId({ params }) {
   const {id} = params
   dayjs.extend(relativeTime)
@@ -64,7 +77,8 @@ async function SongId({ params }) {
                   </div>
                 
               </div>
-          </article>              
+          </article>    
+          <Image width={400} height={400} src={song.imageUrl}/>          
       </div>  
 </section>
     </Wrapper>
