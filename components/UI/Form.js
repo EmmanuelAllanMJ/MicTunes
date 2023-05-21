@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import Wrapper from "../Wrapper/Wrapper";
+import toast, { Toaster } from "react-hot-toast";
 
 function Form({ title, artist, src }) {
 
@@ -20,11 +21,18 @@ function Form({ title, artist, src }) {
           },
         })
         console.log(formData)
+        if(response.ok){
+          toast('✅ Successfully Uploaded.');
+        }else{
+          toast('❌ Failed to upload');
+
+        }
     }
 
   return (
     <Wrapper>
-      <h2 class="text-4xl font-bold dark:text-white mb-5">Upload your Song</h2>
+      <h2 className="text-4xl font-bold dark:text-white mb-5">Upload your Song</h2>
+      <Toaster />
 
 <form onSubmit={submitHandler}>
   <div className="relative z-0 w-full mb-6 group">

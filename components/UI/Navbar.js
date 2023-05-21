@@ -118,7 +118,7 @@ function Navbar() {
                 </svg>
               </button>
               <a href="/" className="flex ml-2 md:mr-24 gap-2">
-                <BsFillMicFill size={30} color="black dark:white" />
+                <BsFillMicFill size={30} color="white" />
                 <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                   MicTunes
                 </span>

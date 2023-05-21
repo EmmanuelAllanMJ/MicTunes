@@ -1,6 +1,8 @@
+"use client"
 import Card from "@/components/UI/Card";
 import SongCard from "@/components/UI/SongCard";
 import Wrapper from "@/components/Wrapper/Wrapper";
+import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 
 const greeting = () => {
@@ -17,11 +19,13 @@ const greeting = () => {
 };
 
 export default function Home() {
+  const { isSignedIn, isLoaded, user } = useUser();
+
   return (
     <Wrapper>
-      <h4 className="text-2xl font-bold dark:text-white">
-        {`${greeting()}`} Neil Sims
-      </h4>
+    <h4 className="text-2xl font-bold dark:text-white">
+        {`${greeting()}`}    {isSignedIn && ( `${user.fullName}`
+      )}</h4>
       <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
         <button
           type="button"
@@ -37,10 +41,10 @@ export default function Home() {
         </button>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-center justify-between ">
-        <Card title="Liked Songs" src="https://picsum.photos/100" />
-        <Card title="Tamil Songs" src="https://picsum.photos/100" />
-        <Card title="Hindi Songs" src="https://picsum.photos/100" />
-        <Card title="Telugu Songs" src="https://picsum.photos/100" />
+        <Card link='/liked'title="Liked Songs" src="https://picsum.photos/100" />
+        <Card link="/genre/tamil"title="Tamil Songs" src="https://picsum.photos/100" />
+        <Card link="/genre/hindi"title="Hindi Songs" src="https://picsum.photos/100" />
+        <Card link="/genre/telugu"title="Telugu Songs" src="https://picsum.photos/100" />
         {/* <Card 
           title="Strangers in the Night"
           artist="Frank Sinatra"
