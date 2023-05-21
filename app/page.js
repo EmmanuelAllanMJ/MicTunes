@@ -41,7 +41,7 @@ export default function Home() {
         </button>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-center justify-between ">
-        <Card link='/liked'title="Liked Songs" src="https://picsum.photos/100" />
+        <Card link='/genre/english'title="English Songs" src="https://picsum.photos/100" />
         <Card link="/genre/tamil"title="Tamil Songs" src="https://picsum.photos/100" />
         <Card link="/genre/hindi"title="Hindi Songs" src="https://picsum.photos/100" />
         <Card link="/genre/telugu"title="Telugu Songs" src="https://picsum.photos/100" />

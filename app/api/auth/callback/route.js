@@ -32,6 +32,7 @@ export async function POST(request) {
       data: {
         userId : user.id,
        email: user.emailAddresses[0].emailAddress,
+       imageUrl:user.profileImageUrl
       },
     });
     prisma.$disconnect();

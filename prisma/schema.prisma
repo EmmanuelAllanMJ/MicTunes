@@ -9,17 +9,15 @@ generator client {
 }
 
 model User {
-  id             Int            @id @default(autoincrement())
+  id             String            @id @default(cuid())
   userId         String         @unique
   email          String         @unique
-  favoriteSongs  FavoriteSong[]
-  songLists      SongList[]
-  Song           Song?          @relation(fields: [songId], references: [id])
-  songId         Int?
+  imageUrl       String
+  Song           Song[]         @relation("Song")
 }
 
 model Song {
-  id           Int            @id @default(autoincrement())
+  songId       String         @id @default(cuid())
   title        String
   duration     Int
   album        String
@@ -27,25 +25,8 @@ model Song {
   lyrics       String
   imageUrl     String
   releaseDate  DateTime   @default(now())
-  artist       User[]
-  songLists    SongList[]
-  FavoriteSong FavoriteSong[]
+  artist       User    @relation("Song",fields: [songId], references: [id])
+
+  @@index([songId])
 }
 
-model FavoriteSong {
-  id     Int  @id @default(autoincrement())
-  userId Int
-  songId Int
-  user   User @relation(fields: [userId], references: [id])
-  song   Song @relation(fields: [songId], references: [id])
-
-  @@unique([userId, songId])
-}
-
-model SongList {
-  id     Int    @id @default(autoincrement())
-  name   String
-  userId Int
-  user   User   @relation(fields: [userId], references: [id])
-  songs  Song[]
-}
