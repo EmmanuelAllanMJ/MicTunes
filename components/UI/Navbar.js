@@ -244,11 +244,11 @@ function Navbar() {
             </li>
             <li>
               <a
-                href="#"
+                href="/song"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <BiPodcast size={20} color="#94a3b8" />
-                <span className="flex-1 ml-3 whitespace-nowrap">Podcast</span>
+                <span className="flex-1 ml-3 whitespace-nowrap">Song</span>
                 <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">
                   Pro
                 </span>

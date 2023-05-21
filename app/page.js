@@ -1,9 +1,9 @@
 "use client"
 import Card from "@/components/UI/Card";
-import SongCard from "@/components/UI/SongCard";
 import Wrapper from "@/components/Wrapper/Wrapper";
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
+
 
 const greeting = () => {
   var myDate = new Date();
@@ -18,8 +18,11 @@ const greeting = () => {
   return greet;
 };
 
-export default function Home() {
+export default async  function Home() {
   const { isSignedIn, isLoaded, user } = useUser();
+  // const res = await fetch(`/api/song`,{cache:'no-store'})
+  // const song = await res.json();
+  // console.log(song)
 
   return (
     <Wrapper>
@@ -45,44 +48,9 @@ export default function Home() {
         <Card link="/genre/tamil"title="Tamil Songs" src="https://picsum.photos/100" />
         <Card link="/genre/hindi"title="Hindi Songs" src="https://picsum.photos/100" />
         <Card link="/genre/telugu"title="Telugu Songs" src="https://picsum.photos/100" />
-        {/* <Card 
-          title="Strangers in the Night"
-          artist="Frank Sinatra"
-          src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
-        />
-        <Card
-          title="Strangers in the Night"
-          artist="Frank Sinatra"
-          src="https://fastly.picsum.photos/id/444/400/200.jpg?hmac=VYOy0hSegJt8R4FFkN6Wh9l0yEyKEPuDaysoulbQdJw"
-        /> */}
+       
       </div>
-      <h4 className="text-2xl font-bold dark:text-white my-4">Recently Played</h4>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <SongCard
-          title="Strangers in the Night"
-          artist="Frank Sinatra"
-          time="3:00"
-          album_name="Strangers in the Night"
-        />
-        <SongCard
-          title="Strangers in the Night"
-          artist="Frank Sinatra"
-          time="3:00"
-          album_name="Strangers in the Night"
-        />
-        <SongCard
-          title="Strangers in the Night"
-          artist="Frank Sinatra"
-          time="3:00"
-          album_name="Strangers in the Night"
-        />
-        <SongCard
-          title="Strangers in the Night"
-          artist="Frank Sinatra"
-          time="3:00"
-          album_name="Strangers in the Night"
-        />
-      </div>
+      
     </Wrapper>
   );
 }
