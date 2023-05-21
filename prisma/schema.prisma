@@ -21,13 +21,13 @@ model User {
 model Song {
   id           Int            @id @default(autoincrement())
   title        String
-  artist       String
   duration     Int
   album        String
   genre        String?
   lyrics       String
+  imageUrl     String
   releaseDate  DateTime   @default(now())
-  favoriteBy   User[]
+  artist       User[]
   songLists    SongList[]
   FavoriteSong FavoriteSong[]
 }

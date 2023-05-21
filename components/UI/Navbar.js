@@ -23,14 +23,17 @@ function Navbar() {
 
   useEffect(()=>{
     console.log("entered useeffect")
-    if(isSignedIn && isLoaded){
+    // if(isSignedIn && isLoaded){
+      console.log("Logged In")
       try {
+        console.log("Logged In entered")
+
         const response = fetch('/api/auth/callback', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({message:"hello", id:user.id, email:user.primaryEmailAddress.emailAddress }),
+          body: JSON.stringify(),
         });
   
         if (response.ok) {
@@ -45,9 +48,9 @@ function Navbar() {
       } catch (error) {
         console.error('Error during login:', error);
         // Handle login error
-      }
+      // }
     }
-  },[isSignedIn])
+  },[isSignedIn,isLoaded])
 
 
   async function onSignInHandler(e){
