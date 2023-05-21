@@ -18,6 +18,7 @@ export async function POST(request) {
     },
   });
   if(users){
+    prisma.$disconnect();
     return NextResponse.json({...user, message:"User exists"})
   }
 
@@ -28,10 +29,11 @@ export async function POST(request) {
        email: user.emailAddresses[0].emailAddress,
       },
     });
-
+    prisma.$disconnect();
     return NextResponse.json({...createdUser,message:"user created"});
   } catch (error) {
     console.error(error);
+    prisma.$disconnect();
     return NextResponse.json({ error: 'Unable to create user.' });
   }
 
