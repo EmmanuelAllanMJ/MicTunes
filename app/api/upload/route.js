@@ -12,7 +12,7 @@ export async function POST(req,res) {
     const song = await req.json()
     console.log(song)
     const users = await prisma.song.create({
-        data:{title:song.title,duration:+song.duration,lyrics:song.lyrics,artist:user.emailAddresses[0].emailAddress, album:"MIC"}
+        data:{title:song.title,duration:+song.duration,genre:song.genre,lyrics:song.lyrics,artist:user.emailAddresses[0].emailAddress, album:"MIC"}
     })
     prisma.$disconnect();
 
