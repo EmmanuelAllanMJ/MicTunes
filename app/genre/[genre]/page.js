@@ -31,7 +31,8 @@ async function Genre({ params }) {
             artist={song.artist}
             title={song.title}
             src={song.imageUrl}
-            link={`/song/${song.songId}`}
+            link={`/song/${song.id}`}
+            genre={song.genre}
             />
             ))
             ) : (
