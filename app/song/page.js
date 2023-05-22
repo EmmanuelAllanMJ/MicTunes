@@ -22,7 +22,7 @@ async function Song() {
 
     return (
         <Wrapper>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {song ? (
             song.map((song,i) => (
             <Card
@@ -37,18 +37,7 @@ async function Song() {
                 <p>No songs found</p>
                 )}
 
-            {/* // <Card
-            // key={i}
-            //     artist={song.name}
-            //     title={song.username}
-            //     src={song.webiste}
-            //     link={`/song/${song.webiste}`}
-            //     />
-            //     ))
-            //     ) : (
-            //     <p>No songs found</p>
-                // )} */}
-        </div>
+        </div> */}
         </Wrapper>
     );
 }

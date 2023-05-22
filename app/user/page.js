@@ -5,7 +5,7 @@ import React from "react";
 function User() {
 
   return <div>
-    <Profile />
+    {/* <Profile /> */}
   </div>;
 }
 

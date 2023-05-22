@@ -22,7 +22,7 @@ async function Genre({ params }) {
       <h2 className="text-4xl font-extrabold dark:text-white mb-5">
         {params.genre[0].toUpperCase() + params.genre.substring(1)} Songs
       </h2>
-      <div className="grid grid-cols-2 gap-5">
+      {/* <div className="grid grid-cols-2 gap-5">
 
       {songs ? (
         songs.map((song,i) => (
@@ -38,7 +38,7 @@ async function Genre({ params }) {
             ) : (
               <p>No songs found</p>
               )}
-              </div>
+              </div> */}
     </Wrapper>
   );
 }

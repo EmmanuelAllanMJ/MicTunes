@@ -56,7 +56,7 @@ async function SongId({ params }) {
 
   return (
     <Wrapper>
-      <section class="bg-white dark:bg-gray-900">
+      {/* <section class="bg-white dark:bg-gray-900">
       <div class="grid gap-8 lg:grid-cols-2">
           <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
               <div class="flex justify-between items-center mb-5 text-gray-500">
@@ -80,7 +80,7 @@ async function SongId({ params }) {
           </article>    
           <Image width={400} height={400} src={song.imageUrl}/>          
       </div>  
-</section>
+</section> */}
     </Wrapper>
   );
 }

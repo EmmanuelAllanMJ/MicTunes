@@ -3,8 +3,9 @@ import Wrapper from "@/components/Wrapper/Wrapper";
 
 export default function loading(){
     return(
-        <>
-        {/* <UserLoading/> */}
-        </>
+        // <UserLoading/>
+        <Wrapper>
+            {/* <h1>Loading......</h1> */}
+        </Wrapper>
     )
 }
