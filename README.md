@@ -34,7 +34,3 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-# PLanet Scale
-.env file
-DATABASE_URL='mysql://yjp6rth4gb4zv3kje0ld:pscale_pw_f8U72QqBPfj3AL5j8ibYvu5qYWqgCmvNPNsiuqImGw0@aws.connect.psdb.cloud/mictunes?sslaccept=strict'
-SERVER_URL=http://localhost:3000
