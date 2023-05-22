@@ -8,10 +8,11 @@ const prisma = new PrismaClient();
 export async function POST(req,res) {
     
     const song = await req.json()
-    const artist = await prisma.user.findUnique({ where: { email: "test@gmail.com"} });
+    const artist = await prisma.user.findUnique({ where: { email: "mjemmanuelallan@gmail.com"} });
     console.log(song)
     const users = await prisma.song.create({
-        data:{title:song.title,
+        data:{
+            title:song.title,
             duration:+song.duration,
             genre:song.genre,
             lyrics:song.lyrics,

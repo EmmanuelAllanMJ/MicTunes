@@ -48,7 +48,7 @@ async function Song() {
                 artist={song.artist}
                 title={song.title}
                 src={song.imageUrl}
-                link={`/song/${song.songId}`}
+                link={`/song/${song.id}`}
                 />
                 ))
                 ) : (

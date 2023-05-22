@@ -34,7 +34,7 @@ async function SongId({ params }) {
 
   const song = await prisma.song.findFirst({
     where: {
-      songId: id,
+      id: id,
     },
     select: {
       title: true,
