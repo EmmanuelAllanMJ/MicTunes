@@ -1,14 +1,11 @@
 "use client"
 import React from "react";
 import Wrapper from "../Wrapper/Wrapper";
-import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 // import { useRouter } from "next/navigation";
 
 function Profile() {
   // const router = useRouter()
-  const { isSignedIn, isLoaded, user } = useUser();
-  console.log(user)
   
   // if (isLoaded && !isSignedIn) {
   //   router.push('/',{ shallow: true })
@@ -16,7 +13,7 @@ function Profile() {
 
   return (
     <>
-    {isSignedIn && (<Wrapper>
+  <Wrapper>
       <section className="pt-16 bg-blueGray-50 ">
         <div className="w-full px-4 mx-auto">
           <div className="relative flex flex-col min-w-0 break-words bg-white dark:bg-gray-900 dark:border-gray-700  dark:text-white w-full mb-6 shadow-xl rounded-lg mt-16">
@@ -25,8 +22,8 @@ function Profile() {
                   <Image
                     width={150}
                     height={150}
-                  alt={`${user.fullName}`}
-                  src={`${user.profileImageUrl}`}
+                  alt={`Emmanuel Allan`}
+                  src={`https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`}
                   className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                 />
                 <div className="w-full px-4 text-center mt-20">
@@ -54,7 +51,7 @@ function Profile() {
               </div>
               <div className="text-center mt-12">
                 <h3 className="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-                  {user.fullName}
+                  Emmanuel Allan
                 </h3>
                
               </div>
@@ -72,7 +69,7 @@ function Profile() {
           </div>
         </div>
       </section>
-      </Wrapper>)}
+      </Wrapper>
       </>
   );
 }

@@ -1,7 +1,6 @@
 "use client"
 import Card from "@/components/UI/Card";
 import Wrapper from "@/components/Wrapper/Wrapper";
-import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 
 
@@ -19,7 +18,6 @@ const greeting = () => {
 };
 
 export default async  function Home() {
-  const { isSignedIn, isLoaded, user } = useUser();
   // const res = await fetch(`/api/song`,{cache:'no-store'})
   // const song = await res.json();
   // console.log(song)
@@ -27,8 +25,7 @@ export default async  function Home() {
   return (
     <Wrapper>
     <h4 className="text-2xl font-bold dark:text-white">
-        {`${greeting()}`}    {isSignedIn && ( `${user.fullName}`
-      )}</h4>
+        {`${greeting()}`}    Allan </h4>
       <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
         <button
           type="button"

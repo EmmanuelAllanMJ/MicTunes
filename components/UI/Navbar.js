@@ -1,92 +1,16 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import Link from 'next/link';
+
+import React, {  useState } from "react";
 import { BsFillMicFill } from "react-icons/bs";
 import { AiFillHome, AiOutlineUpload } from "react-icons/ai";
 import { BiPodcast, BiSearch, BiLibrary } from "react-icons/bi";
-import {
-  SignIn,
-  SignInButton,
-  SignOutButton,
-  SignUp,
-  UserButton,
-  UserProfile,
-  useClerk,
-  useSignIn,
-  useUser,
-} from "@clerk/nextjs";
+
 
 function Navbar() {
   const [profileOnClick, setProfileOnClick] = useState(false);
   const [btnOnClick, setBtnOnClick] = useState(true);
-  const { isSignedIn, isLoaded, user } = useUser();
-  const { openSignIn,signOut } = useClerk();
-  const { isLoaded:isLoadedSignIn, signIn, setActive } = useSignIn();
-
-  useEffect(()=>{
-    console.log("entered useeffect")
-    // if(isSignedIn && isLoaded){
-      console.log("Logged In")
-      try {
-        console.log("Logged In entered")
-
-        const response = fetch('/api/auth/callback', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(),
-        });
-  
-        if (response.ok) {
-          const { message } = response.json();
-          console.log('Logged in user:', message);
-          // Handle successful login, e.g., redirect to dashboard
-        } else {
-
-          console.error('Login failed');
-          // Handle login failure, e.g., display error message
-        }
-      } catch (error) {
-        console.error('Error during login:', error);
-        // Handle login error
-      // }
-    }
-  },[isSignedIn,isLoaded])
-
-
-  async function onSignInHandler(e){
-    // Perform the sign-in process using Clerk
-    e.preventDefault();
-    console.log("log in")
-    openSignIn({});
-    
-    // setTimeout(() => {
-    // try {
-    //   const response = fetch('/api/auth/callback', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({id:user.id, email:user.primaryEmailAddress.emailAddress }),
-    //   });
-
-    //   if (response.ok) {
-    //     const { message } = response.json();
-    //     console.log('Logged in user:', message);
-    //     // Handle successful login, e.g., redirect to dashboard
-    //   } else {
-
-    //     console.error('Login failed');
-    //     // Handle login failure, e.g., display error message
-    //   }
-    // } catch (error) {
-    //   console.error('Error during login:', error);
-    //   // Handle login error
-    // }
-    // }, 4000);
-    }
-
 
   return (
     <>
@@ -117,14 +41,14 @@ function Navbar() {
                   ></path>
                 </svg>
               </button>
-              <a href="/" className="flex ml-2 md:mr-24 gap-2">
+              <Link href="/" className="flex ml-2 md:mr-24 gap-2">
                 <BsFillMicFill size={30} color="white" />
                 <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                   MicTunes
                 </span>
-              </a>
+              </Link>
             </div>
-            {isSignedIn && <div className="flex items-center">
+           <div className="flex items-center">
               <div className="flex items-center ml-3">
                 <div>
                   <button
@@ -139,7 +63,7 @@ function Navbar() {
                       width={32}
                       height={32}
                       className=" rounded-full"
-                      src={`${user.profileImageUrl}`}
+                      src={`https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`}
                       alt="user photo"
                     />
                   </button>
@@ -154,63 +78,57 @@ function Navbar() {
                       className="text-sm text-gray-900 dark:text-white"
                       role="none"
                     >
-                      {user.fullName}
+                      Emmanuel Allan
                     </p>
                     <p
                       className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
                       role="none"
                     >
-                     {user.primaryEmailAddress.emailAddress}
+                     test@gmail.com
                     </p>
                   </div>
                   <ul className="py-1" role="none">
                     <li>
-                      <a
+                      <Link
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
                         Dashboard
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
                         Settings
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
                         Earnings
-                      </a>
+                      </Link>
                     </li>
                     <li onClick={() => signOut()} >
-                      <a
+                      <Link
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
                         Sign out
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
               </div>
-            </div>}
-            {!isSignedIn && (
-              <button onClick={onSignInHandler} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                <SignInButton/>
-                {/* Sign In */}
-              </button>
-
-            )}
+            </div>
+           
           </div>
         </div>
       </nav>
@@ -225,25 +143,25 @@ function Navbar() {
         <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
             <li>
-              <a
+              <Link
                 href="/"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <AiFillHome size={20} color="#94a3b8" />
                 <span className="ml-3">Home</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <BiSearch size={20} color="#94a3b8" />
                 <span className="flex-1 ml-3 whitespace-nowrap">Search</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/song"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
@@ -252,10 +170,10 @@ function Navbar() {
                 <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">
                   Pro
                 </span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="#"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
@@ -264,12 +182,11 @@ function Navbar() {
                 <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                   3
                 </span>
-              </a>
+              </Link>
             </li>
-           {isSignedIn &&(
-           <>
+   
            <li>
-              <a
+              <Link
                 href="/user/"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
@@ -287,19 +204,18 @@ function Navbar() {
                   ></path>
                 </svg>
                 <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/upload/"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <AiOutlineUpload size={20} color="#94a3b8" />
                 <span className="flex-1 ml-3 whitespace-nowrap">Upload</span>
-              </a>
+              </Link>
             </li>
-            </>
-            )}
+
           </ul>
         </div>
       </aside>

@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import { currentUser } from '@clerk/nextjs';
 
 import { PrismaClient } from "@prisma/client";
 
@@ -7,10 +6,9 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
  
 export async function POST(req,res) {
-    const user = await currentUser();
     
     const song = await req.json()
-    const artist = await prisma.user.findUnique({ where: { email: user.emailAddresses[0].emailAddress } });
+    const artist = await prisma.user.findUnique({ where: { email: "test@gmail.com"} });
     console.log(song)
     const users = await prisma.song.create({
         data:{title:song.title,
