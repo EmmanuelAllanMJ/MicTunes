@@ -11,24 +11,6 @@ import { PrismaClient } from "@prisma/client";
 // create a new instance of prisma
 const prisma = new PrismaClient();
 
-// async function getData(){
-//         const res =  await fetch(`${process.env.SERVER_URL}/api/song`, {
-//             method: "GET",
-//             headers: {
-//               "Content-Type": "application/json"
-//             }})
-//     const data = await res.json();
-//     return data
-// }
-
-
-
-// async function getData(){
-//         const res =  await fetch(`https://jsonplaceholder.typicode.com/users/`,{next:{revalidate:10}})
-//     const data = await res.json();
-//     return data
-// }
-
 
 async function Song() {
     // const res =  await fetch(`/api/song`,{cache:'no-store'})
